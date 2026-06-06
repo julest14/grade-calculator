@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Grade Calculator</title>
+</head>
+<body>
+    <h1>Final Grade Calculator</h1>
+    <h1></h1>
+    <h3>What Score Do I Need On My Final?</h3>
+    <p>Current Grade:</p>
+    <input type="number" id="currentGrade">
+    <p>Desired Grade:</p>
+    <input type="number" id="desiredGrade">
+    <p>Final Weight:</p>
+    <input type="number" id="finalWeight">
+    <button onclick="calculate()">Run</button>
+    <div id="result"></div>
+
+    <a href="index.html">Back</a>
+
+    <script>
+    
+        function calculate() {
+            let current =
+            document.getElementById("currentGrade").value;
+            let desired = 
+            document.getElementById("desiredGrade").value;
+            let weight =
+            document.getElementById("finalWeight").value;
+
+            current = parseFloat(current);
+            desired = parseFloat(desired);
+            weight = parseFloat(weight);
+
+            weight = weight / 100;
+
+            let required =
+                (desired - (1 - weight) * current) / weight;
+
+            document.getElementById("result").innerText = "You need " + required.toFixed(2) + "% on your final";
+        }
+    </script>
+
+
+
+    <script data-goatcounter="https://juest14.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

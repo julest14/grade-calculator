@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+</head>
+<body>
+
+    <div id="courses">
+        <input type="number" class="grade">
+        <input type="number" class="grade">
+        <input type="number" class="grade">
+        <input type="number" class="grade">
+    </div>
+    <button onclick="addCourse()">Add Course</button>
+    <button onClick="removeCourse()">Remove Course</button>
+    <button onclick="calculate()" id="calculate">Go</button>
+    <div id="result"></div>
+
+
+
+    <script>
+        function calculate() {
+            let grades = document.querySelectorAll(".grade");
+
+            let total = 0;
+
+            for (let grade of grades) {
+                let percent = parseFloat(grade.value) || 0;
+                let points = (percent / 100) * 4;
+                total += points;
+            }
+
+            let gpa = total / grades.length;
+
+            document.getElementById("result").innerText = gpa.toFixed(2);
+        }
+
+        function addCourse() {
+            let input = document.createElement("input");
+
+            input.type = "number";
+            input.className = "grade";
+
+            document.getElementById("courses").appendChild(input);
+        }
+        function removeCourse() {
+            let grades = document.querySelectorAll(".grade");
+
+            if (grades.length > 4) {
+                grades[grades.length - 1].remove();
+            }
+        }
+    </script>
+</body>
+</html>
